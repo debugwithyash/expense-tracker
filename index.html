@@ -93,7 +93,7 @@
 </style>
 </head>
 <body>
-<h1>Hello Yash</h1>
+
 <div class="container">
   <h2>💸 Expense Tracker</h2>
 
@@ -124,6 +124,8 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 function addTransaction() {
@@ -131,7 +133,7 @@ function addTransaction() {
   const amount = document.getElementById("amount").value;
   const type = document.getElementById("type").value;
 
-  if (text === "" || amount === "") {
+  if (!text || !amount) {
     alert("Enter all details!");
     return;
   }
@@ -167,8 +169,13 @@ function updateUI() {
       <span class="${t.type === 'income' ? 'green' : 'red'}">
         ${t.type === 'income' ? '+' : '-'}₹${t.amount}
       </span>
-      <span class="delete" onclick="deleteTransaction(${t.id})">x</span>
+      <span class="delete">x</span>
     `;
+
+    li.querySelector(".delete").addEventListener("click", () => {
+      deleteTransaction(t.id);
+    });
+
     list.appendChild(li);
   });
 
@@ -187,7 +194,11 @@ function saveData() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
+window.addTransaction = addTransaction;
+
 updateUI();
+
+});
 </script>
 
 </body>
