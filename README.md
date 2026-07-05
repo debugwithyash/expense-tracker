@@ -4,7 +4,10 @@ A simple and interactive Expense Tracker built using **HTML, CSS, and JavaScript
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Live Demo:
+https://expensivestracker.netlify.app/
+
+##Github Repository:
 👉 https://debugwithyash.github.io/expense-tracker/
 
 ---
